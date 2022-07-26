@@ -1,8 +1,8 @@
-# Vue核心
+# Vue 核心
 
 ## 一、模板语法
 
-在html中插入一些js语法代码
+在 html 中插入一些 js 语法代码
 
 1. 插值语法（双大括号表达式）
 2. 指令（以 v-开头）
@@ -33,21 +33,16 @@
 
 语法：v-mode:value="xxx" 或简写为 v-model="xxx"
 
-特点：数据不仅能从 data 流向页面，还能从页面流向data
+特点：数据不仅能从 data 流向页面，还能从页面流向 data
 
 > **额外知识**
 >
-> el的两种写法
+> el 的两种写法
 >
 > 第一种：
 >
 > ```vue
-> new Vue({
-> 	el:"#root",
-> 	data:{
-> 		msg:"尚硅谷"
-> 	}
-> })
+> new Vue({ el:"#root", data:{ msg:"尚硅谷" } })
 > ```
 >
 > 第二种：
@@ -58,11 +53,11 @@
 > 		return name:'尚硅谷'
 > 	}
 > })
-> 
+>
 > vm.$mount('#root')
 > ```
 >
-> data的两种写法
+> data 的两种写法
 >
 > 第一种：
 >
@@ -96,7 +91,7 @@ VM：视图模型(ViewModel) ： Vue 实例对象
 
 ## 三、事件处理
 
-事件不要直接写到data对象中，会增加vue的负担，写入methods中，并且不要使用箭头符号，会导致this只想window。
+事件不要直接写到 data 对象中，会增加 vue 的负担，写入 methods 中，并且不要使用箭头符号，会导致 this 指向 window。
 
 ### （一）绑定监听
 
@@ -104,27 +99,27 @@ VM：视图模型(ViewModel) ： Vue 实例对象
 
 ```html
 <body>
-    <div id="root">
-      <h2>欢迎来到{{name}}学习</h2>
-      <button v-on:click="showInfo">点我提示信息</button>
-    </div>
+  <div id="root">
+    <h2>欢迎来到{{name}}学习</h2>
+    <button v-on:click="showInfo">点我提示信息</button>
+  </div>
 
-    <script>
-      Vue.config.productionTip = false;
+  <script>
+    Vue.config.productionTip = false;
 
-      new Vue({
-        el: "#root",
-        data: {
-          name: "尚硅谷",
+    new Vue({
+      el: "#root",
+      data: {
+        name: "尚硅谷",
+      },
+      methods: {
+        showInfo() {
+          alert("同学你好");
         },
-        methods: {
-          showInfo() {
-            alert("同学你好");
-          },
-        },
-      });
-    </script>
-  </body>
+      },
+    });
+  </script>
+</body>
 ```
 
 #### 2.@xxx = "fun"
@@ -135,7 +130,7 @@ VM：视图模型(ViewModel) ： Vue 实例对象
 
 #### 3.@xxx = "fun(参数)"
 
-可以给event保留位置：@xxx = "fun($event, 参数)"
+可以给 event 保留位置：@xxx = "fun($event, 参数)"
 
 ### （二）事件修饰符
 
@@ -159,7 +154,7 @@ VM：视图模型(ViewModel) ： Vue 实例对象
 
 #### 5.self
 
-只有event.target是当前操作的元素时才触发事件
+只有 event.target 是当前操作的元素时才触发事件
 
 #### 6.passive
 
@@ -167,59 +162,57 @@ VM：视图模型(ViewModel) ： Vue 实例对象
 
 ```html
 <body>
-    <div id="root">
-      <p>欢迎来到{{name}}学习</p>
-      <!-- 1.阻止默认事件（常用） -->
-      <a href="http://www.atguigu.com" @click.prevent="showInfo"
-        >点我弹出消息</a
-      >
-      <!-- 2.阻止事件冒泡 -->
-      <div class="demo1" @click="showInfo">
-        <button @click.stop="showInfo">点我提示信息</button>
-      </div>
-      <!-- 3.事件只触发一次 -->
-      <button @click.once="showInfo">点我提示信息</button>
-      <!-- 4.使用事件的捕获模式 -->
-      <div class="box1" @click.capture="showMsg(1)">
-        div1
-        <div class="box2" @click="showMsg(2)">div2</div>
-      </div>
-      <!-- 5.self -->
-      <div class="demo1" @click.self="showInfo">
-        <button @click="showInfo">点我提示信息</button>
-      </div>
-      <!-- 6.passive -->
-      <ul @wheel.passive="demo" class="list">
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-        <li>4</li>
-      </ul>
+  <div id="root">
+    <p>欢迎来到{{name}}学习</p>
+    <!-- 1.阻止默认事件（常用） -->
+    <a href="http://www.atguigu.com" @click.prevent="showInfo">点我弹出消息</a>
+    <!-- 2.阻止事件冒泡 -->
+    <div class="demo1" @click="showInfo">
+      <button @click.stop="showInfo">点我提示信息</button>
     </div>
+    <!-- 3.事件只触发一次 -->
+    <button @click.once="showInfo">点我提示信息</button>
+    <!-- 4.使用事件的捕获模式 -->
+    <div class="box1" @click.capture="showMsg(1)">
+      div1
+      <div class="box2" @click="showMsg(2)">div2</div>
+    </div>
+    <!-- 5.self -->
+    <div class="demo1" @click.self="showInfo">
+      <button @click="showInfo">点我提示信息</button>
+    </div>
+    <!-- 6.passive -->
+    <ul @wheel.passive="demo" class="list">
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+    </ul>
+  </div>
 
-    <script>
-      Vue.config.productionTip = false;
+  <script>
+    Vue.config.productionTip = false;
 
-      const vm = new Vue({
-        el: "#root",
-        data: {
-          name: "尚硅谷",
+    const vm = new Vue({
+      el: "#root",
+      data: {
+        name: "尚硅谷",
+      },
+      methods: {
+        showInfo(e) {
+          alert("同学你好!");
+          console.log(e.target);
         },
-        methods: {
-          showInfo(e) {
-            alert("同学你好!");
-            console.log(e.target);
-          },
-          showMsg(msg) {
-            console.log(msg);
-          },
-          demo() {
-            console.log("@");
-          },
+        showMsg(msg) {
+          console.log(msg);
         },
-      });
-    </script>
-  </body>
+        demo() {
+          console.log("@");
+        },
+      },
+    });
+  </script>
+</body>
 ```
 
 ### （三）键盘修饰符
@@ -229,28 +222,28 @@ VM：视图模型(ViewModel) ： Vue 实例对象
 操作的是某个 keycode 值的键
 
 ```html
-<input type="text" placeholder="按下回车提示输入" @keyup.enter="showInfo"/>
+<input type="text" placeholder="按下回车提示输入" @keyup.enter="showInfo" />
 ```
 
-**Vue中常用的案件别名：**
+**Vue 中常用的案件别名：**
 
-| 键                          | 别名  | 键                         | 别名   |
-| --------------------------- | ----- | -------------------------- | ------ |
-| 回车                        | enter | 删除（捕获“删除”和“退格”） | delete |
-| 退出                        | esc   | 空格                       | space  |
-| 换行（闭合配合keydown使用） | tab   | 上                         | up     |
-| 下                          | down  | 左                         | left   |
-| 右                          | right |                            |        |
+| 键                            | 别名  | 键                         | 别名   |
+| ----------------------------- | ----- | -------------------------- | ------ |
+| 回车                          | enter | 删除（捕获“删除”和“退格”） | delete |
+| 退出                          | esc   | 空格                       | space  |
+| 换行（闭合配合 keydown 使用） | tab   | 上                         | up     |
+| 下                            | down  | 左                         | left   |
+| 右                            | right |                            |        |
 
-> Vue未提供别名的按键，可以使用按键原始的key值去绑定，多个单词组成的key值要转为kebab-case（短横线命名）
+> Vue 未提供别名的按键，可以使用按键原始的 key 值去绑定，多个单词组成的 key 值要转为 kebab-case（短横线命名）
 
 特殊修饰键：`ctrl` `alt` `shift` `meta`
 
-（1）配合keyup使用：按下修饰键的同事，再按下其它键，随后释放其它键，事件才被触发。
+（1）配合 keyup 使用：按下修饰键的同事，再按下其它键，随后释放其它键，事件才被触发。
 
-（2）配合keydown使用：正常触发事件。
+（2）配合 keydown 使用：正常触发事件。
 
-> **注意：**keyCode已经废弃，不推荐使用指定具体的按键。
+> **注意：**keyCode 已经废弃，不推荐使用指定具体的按键。
 
 不推荐定制按键别名：`Vue.config.keyCodes.自定义键名 = 键码`
 
@@ -267,37 +260,36 @@ VM：视图模型(ViewModel) ： Vue 实例对象
 在页面中使用`{{方法名}}`来显示计算的结果
 
 ```html
-  <body>
-    <div id="root">
-      姓：<input type="text" v-model="firstName" /><br /><br />
-      名：<input type="text" v-model="lastName" /><br /><br />
-      姓名：<span>{{fullName}}</span>
-    </div>
+<body>
+  <div id="root">
+    姓：<input type="text" v-model="firstName" /><br /><br />
+    名：<input type="text" v-model="lastName" /><br /><br />
+    姓名：<span>{{fullName}}</span>
+  </div>
 
-    <script>
-      Vue.config.productionTip = false;
+  <script>
+    Vue.config.productionTip = false;
 
-      new Vue({
-        el: "#root",
-        data: {
-          firstName: "张",
-          lastName: "三",
-        },
-        computed: {
-          fullName: {
-            get() {
-              return this.firstName + "-" + lastName;
-            },
-              set(value) {
-              console.log("set" + value);
-              const arr = value.split("-");
-              this.firstName = arr[0];
-              this.lastName = arr[1];
-            },
+    new Vue({
+      el: "#root",
+      data: {
+        firstName: "张",
+        lastName: "三",
+      },
+      computed: {
+        fullName: {
+          get() {
+            return this.firstName + "-" + lastName;
+          },
+          set(value) {
+            console.log("set" + value);
+            const arr = value.split("-");
+            this.firstName = arr[0];
+            this.lastName = arr[1];
           },
         },
-      });
-    </script>
-  </body>
+      },
+    });
+  </script>
+</body>
 ```
-
