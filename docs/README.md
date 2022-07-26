@@ -1,3 +1,5 @@
-# Headline
+# Niko Zhao
 
-> An awesome project.
+> 我是 Niko Zhao，一个想要转行前端的小白。
+> 在这里，记录我的学习，分享我的一些想法。
+> 欢迎提出你的建议，帮助我更好学习进步~~
