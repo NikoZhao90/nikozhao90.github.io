@@ -1,6 +1,6 @@
 - 基础知识
   - [Vue 学习笔记](/Vue/Vue学习笔记.md)
-  - [jQuery 学习笔记](/Vue/jQuery.md)
+  - [jQuery 学习笔记](/jQuery/JQuery.md)
   - [Typora+Docsify 快速入门](/ProjectDocs/Typora+Docsify快速入门.md)
 - 高级技能
   - [Vue 学习笔记](/Vue/Vue学习笔记.md)
