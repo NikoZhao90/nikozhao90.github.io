@@ -199,7 +199,7 @@ jQuery 使用名为 `noConflict()` 的方法来解决该问题。
 > - 把 jQuery 代码置于单独的 .js 文件中
 > - 如果存在名称冲突，则重命名 jQuery 库
 
-## 2.jQuery效果
+## 2. jQuery效果
 
 ### 2.1 隐藏和显示
 
@@ -466,3 +466,98 @@ $(selector).stop(stopAll,goToEnd);
 可选的 *goToEnd* 参数规定是否立即完成当前动画。默认是 false。
 
 因此，默认地，stop() 会清除在被选元素上指定的当前动画。
+
+### 2.6 Callback 函数
+
+在当前动画 100% 完成之后执行。
+
+由于 JavaScript 语句（指令）是逐一执行的 - 按照次序，动画之后的语句可能会产生错误或页面冲突，因为动画还没有完成。
+
+为了避免这个情况，可以以参数的形式添加 Callback 函数。
+
+```javascript
+$(selector).hide(speed,callback)
+```
+
+### 2.7 Chaining
+
+通过 jQuery，可以把动作/方法链接起来。
+
+Chaining 允许在一条语句中允许多个 jQuery 方法（在相同的元素上）。
+
+这样的话，浏览器就不必多次查找相同的元素。
+
+```javascript
+$("#p1").css("color","red").slideUp(2000).slideDown(2000);
+```
+
+## 3. jQuery HTML
+
+### 3.1 获得内容和属性
+
+#### 3.1.1 获得内容 - text()、html() 以及 val()
+
+- `text()` - 设置或返回所选元素的文本内容
+- `html()` - 设置或返回所选元素的内容（包括 HTML 标记）
+- `val()` - 设置或返回表单字段的值
+
+#### 3.1.2 获取属性 - attr()
+
+用于获取属性值。
+
+```javascript
+$("button").click(function(){
+  alert($("#w3s").attr("href"));
+});
+```
+
+### 3.2 设置内容和属性
+
+#### 3.2.1 设置内容 - text()、html() 以及 val()
+
+- text() - 设置或返回所选元素的文本内容
+- html() - 设置或返回所选元素的内容（包括 HTML 标记）
+- val() - 设置或返回表单字段的值
+
+```javascript
+$("#btn1").click(function(){
+  $("#test1").text("Hello world!");
+});
+$("#btn2").click(function(){
+  $("#test2").html("<b>Hello world!</b>");
+});
+$("#btn3").click(function(){
+  $("#test3").val("Dolly Duck");
+});
+```
+
+#### 3.2.2 text()、html() 以及 val() 的回调函数
+
+回调函数由两个参数：被选元素列表中当前元素的下标，以及原始（旧的）值。然后以函数新值返回您希望使用的字符串。
+
+```javascript
+$("#btn1").click(function(){
+  $("#test1").text(function(i,origText){
+    return "Old text: " + origText + " New text: Hello world!
+    (index: " + i + ")";
+  });
+});
+
+$("#btn2").click(function(){
+  $("#test2").html(function(i,origText){
+    return "Old html: " + origText + " New html: Hello <b>world!</b>
+    (index: " + i + ")";
+  });
+});
+```
+
+#### 3.2.3 设置属性 - attr()
+
+`jQuery attr()` 方法也用于设置/改变属性值。
+
+```javascript
+$("button").click(function(){
+  $("#w3s").attr("href","http://www.w3school.com.cn/jquery");
+});
+```
+
