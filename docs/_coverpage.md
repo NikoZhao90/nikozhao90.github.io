@@ -1,8 +1,5 @@
-# NikoZhao
+# Zhao & Zhao
 
-> 💪 记录学习中的点点滴滴
+> <span style="color:red">❤❤❤</span> 记录小赵和老赵的日子 <span style="color:red">❤❤❤</span>
 
-欢迎和我一起交流
-email：zhao_bo58@163.com
-
-[开始使用 Let Go](/README.md)
+[开启美好生活](/README.md)
