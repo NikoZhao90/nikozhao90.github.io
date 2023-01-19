@@ -1,5 +1,5 @@
 # Zhao & Zhao
 
-> <b style="color:red">❤❤❤</b> 小赵和老赵的点点滴滴 <b style="color:red">❤❤❤</b>
+> <span style="color:red">❤❤❤</span> 记录小赵和老赵的日子 <span style="color:red">❤❤❤</span>
 
-[开启幸福](/README.md)
+[开启美好生活](/README.md)
